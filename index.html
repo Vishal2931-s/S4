@@ -260,19 +260,31 @@ roseScreen.style.display="block";
 document.getElementById("music").play();
 
 let count=0;
+
 let interval=setInterval(()=>{
+
 let rose=document.createElement("div");
-rose.classList.add("rose");
 rose.innerHTML="🌹";
+rose.style.position="absolute";
 rose.style.left=Math.random()*100+"vw";
-rose.style.animationDuration=(3+Math.random()*2)+"s";
+rose.style.top="-40px";
+rose.style.fontSize="28px";
+rose.style.transition="top 3s linear";
+
 roseScreen.appendChild(rose);
 
+setTimeout(()=>{
+let finalPosition = Math.random() * (window.innerHeight - 80);
+rose.style.top = finalPosition + "px";
+},50);
+
 count++;
+
 if(count>120){
 clearInterval(interval);
 document.getElementById("heartButton").style.display="block";
 }
+
 },80);
 }
 
